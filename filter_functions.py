@@ -1,18 +1,21 @@
-import my_utilities as ut
 import sys
+from functools import partial
+import utilities as ut
 
-def print_if_err_code(code) :
+#filter function
+def print_if(condition) :
     for line in sys.stdin:
-        if ut.get_err_code(line) == code : print(line,end='')
+        if condition(line) : print(line,end='')
+
+#printing functions
+def print_if_err_code(err_code) :
+    print_if(partial (ut.err_code_equals,err_code))
 
 def print_night() :
-    for line in sys.stdin:
-        if ut.is_download(line) and (ut.get_hour(line) < 6 or ut.get_hour(line) >= 22) : print(line,end='')
+    print_if(partial (ut.was_downloaded_at_night))
 
 def print_friday() :
-    for line in sys.stdin:
-        if ut.is_download(line) and ut.get_weekday(line) == 4 : print(line,end='')        
-
+    print_if(partial (ut.was_downloaded_on_friday))    
+    
 def print_polish() :
-    for line in sys.stdin:
-        if ut.get_host_extension(line) == 'pl' : print(line,end='')
+    print_if(partial (ut.was_downloaded_in_poland))      

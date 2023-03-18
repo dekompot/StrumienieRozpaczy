@@ -23,8 +23,6 @@ type NASA | python lab_3_g.py | python lab_3_b.py
 
 type NASA | python lab_3_h.py | python lab_3_b.py
 
-type NASA | python lab_3_h.py | python lab_3_g.py | python lab_3_f.py | python lab_3_e.py | python lab_3_b.py
-
 type NASA | python lab_3_h.py | python lab_3_g.py | python lab_3_f.py | python lab_3_e.py
 
 PAUSE
