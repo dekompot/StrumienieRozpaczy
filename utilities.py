@@ -6,7 +6,7 @@ FRIDAY_INDEX = 4
 POLISH_DOMAIN_EXTENSION = 'pl'
 
 def err_code_equals(error_code, line) :
-    return lf.get_err_code(line) == error_code
+    return lf.get_err_code(line) == str(error_code)
 
 def was_downloaded_at_night(line) :
     return lf.is_download(line) and (lf.get_hour(line) < NIGHT_END or lf.get_hour(line) >= NIGHT_BEGINNING)

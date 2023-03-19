@@ -3,7 +3,7 @@ from datetime import date
 MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
 HTTP_GET = "GET"
 GRAPHICS_EXTENSION = ['gif','jpg','jpeg','xbm']
-SUCCESS_CODE = 200
+SUCCESS_CODE = '200'
 
 HOST_INDEX = 0
 DATE_TIME_INDEX = 3
@@ -58,7 +58,7 @@ def get_extension(line) :
     return get_path(line).split('.')[-1]
 
 def get_err_code(line) :
-    return int(line.split()[ERR_CODE_INDEX])
+    return line.split()[ERR_CODE_INDEX]
 
 def get_transferred_data(line) :
     try :

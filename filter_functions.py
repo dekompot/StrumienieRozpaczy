@@ -5,7 +5,10 @@ import utilities as ut
 #filter function
 def print_if(condition) :
     for line in sys.stdin:
-        if condition(line) : print(line,end='')
+        try :
+            if condition(line) : print(line,end='')
+        except IndexError :
+            continue
 
 #printing functions
 def print_if_err_code(err_code) :

@@ -10,20 +10,29 @@ def count_and_print_err_code(code) :
 def count_if(condition) :
     counter = 0
     for line in sys.stdin:
-        if condition(line) : counter = counter + 1
+        try :
+            if condition(line) : counter = counter + 1
+        except IndexError :
+            continue
     return counter
 
 def sum_if(condition,get_value) :
     sum = 0
     for line in sys.stdin:
-        if condition(line) : sum = sum + get_value(line)
+        try :
+            if condition(line) : sum = sum + get_value(line)
+        except IndexError :
+            continue
     return sum
 
 def get_max_line(get_value) :
     max = 0
     max_line = ""
     for line in sys.stdin:
-        if get_value(line) > max : max = get_value(line) ; max_line = line
+        try :
+            if get_value(line) > max : max = get_value(line) ; max_line = line
+        except IndexError :
+            continue    
     return max_line
 
 #specified reduction functions
@@ -47,10 +56,13 @@ def get_graph_downloads_to_all_downloads_ratio():
 def get_graph_downloads_to_all_ratio() :
     all_downloads = 0
     graphics_downloads = 0
-    for line in sys.stdin:
-        if lf.is_download(line): 
-            all_downloads+=1
-            if lf.is_graphical_download(line) : graphics_downloads += 1
+    for line in sys.stdin:       
+        try :
+            if lf.is_download(line): 
+                all_downloads+=1
+                if lf.is_graphical_download(line) : graphics_downloads += 1
+        except IndexError :
+            continue    
     return graphics_downloads / all_downloads
 
 
